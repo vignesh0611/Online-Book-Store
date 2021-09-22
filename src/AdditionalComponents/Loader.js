@@ -3,6 +3,7 @@ import React from 'react';
 function Loader({message}) {
     return (
         <div>
+            {/* Loading spinner */}
             <div class="d-flex justify-content-center">
                 <div className="spinner-border text-danger" role="status">
                     <span className="visually-hidden"></span>

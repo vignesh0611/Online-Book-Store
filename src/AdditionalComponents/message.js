@@ -3,7 +3,6 @@ import "./helperStyle.css";
 
 const Message = ({ variant, message }) => {
     const [show, setShow] = useState(true)
-
     useEffect(() => {
         const timeId = setTimeout(() => {
             setShow(false)
@@ -13,11 +12,9 @@ const Message = ({ variant, message }) => {
             clearTimeout(timeId)
         }
     }, []);
-
     if (!show) {
         return null;
     }
-
     return (
         <div className={`alert alert-${variant} alert-position`} role="alert">
             {message}

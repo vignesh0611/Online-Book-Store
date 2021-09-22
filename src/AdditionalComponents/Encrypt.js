@@ -1,5 +1,6 @@
 import CryptoJS from 'crypto-js';
 
+// encrypting
 export const encrypt = plainObject => {
     if(plainObject){
         try{
@@ -11,6 +12,7 @@ export const encrypt = plainObject => {
     }
 }
 
+// decrypting
 export const decrypt = cipherText => {
     if(cipherText){
         try{
