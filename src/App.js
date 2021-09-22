@@ -91,7 +91,6 @@ function App() {
     },[])
   return (
     <div>
-      {/* <BrowserRouter> */}
       {
           error && <Message message={error} variant="danger"/>
       }
@@ -127,12 +126,6 @@ function App() {
                 <Route path="/search">
                     <SearchPage/>
                 </Route>
-                {/* <Route path="/adminprofile">
-                    <AdminProfile/>
-                </Route> */}
-                {/* <Route path="/profilecart">
-                    <ProfileCart/>
-                </Route> */}
                 <Route path="/book/:bookId">
                     <BookDetailsDescriptionPage/>
                 </Route>
@@ -140,7 +133,6 @@ function App() {
                     <Categorypage/>
                 </Route>
           </Switch>
-      {/* </BrowserRouter> */}
       <Footer/>
     </div>
   )
