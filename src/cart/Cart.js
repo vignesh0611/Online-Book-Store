@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux"
 import { useSelector } from "react-redux"
 import { getItemsToCart } from "../store/CartSlice"
 import { updateItemQuantity, removeItemFromCart } from "../store/CartSlice"
+import { Modal,Button } from "react-bootstrap"
 
 function Cart(){
     let {cart,isloading}=useSelector(state=>state.cart)
@@ -45,6 +46,10 @@ function Cart(){
         newCart[index].quantity++
         dispatch(updateItemQuantity(newCart[index]))
     }
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
     return(
         <div className="container-fluid mt-2">
             {
@@ -158,7 +163,18 @@ function Cart(){
                                     </div>
                                 </div>                                
                             </div>
-                            <button className="btn btn-secondary float-end mt-2 mb-2"><strong>Check Out</strong></button>
+                            {/* <button className="btn btn-secondary float-end mt-2 mb-2"><strong>Check Out</strong></button> */}
+                            <>
+                                <Button className="float-end mt-2 mb-2" variant="danger" onClick={handleShow}>
+                                    CheckOut
+                                </Button>
+                                <Modal show={show} onHide={handleClose}>
+                                    <Modal.Header closeButton>
+                                        <Modal.Title>Successfully Ordered</Modal.Title>
+                                    </Modal.Header>
+                                        <Modal.Body>Your order is conformed.Thank you and visit again</Modal.Body>
+                                </Modal>
+                            </>
                         </div>
                     </div>:
                     <div>
