@@ -10,6 +10,7 @@ function Cart(){
     const [totalItems,setTotalItems] = useState(0)
     const [totalPrice,setTotalPrice] = useState(0)
     const [discountPrice,setDiscountPrice] = useState(0)
+    // to claculate total/discount/no.of items in cart
     useEffect(()=>{
         if(cart.length){
             setTotalItems(cart.map(item => +item.quantity).reduce((total,current)=>total+=current))
@@ -17,20 +18,17 @@ function Cart(){
             setDiscountPrice(cart.map(item => +(item.quantity*((item.books.price)-((item.books.price)*(item.books.discount/100))))).reduce((total,current)=>total+=current))
         }
     },[cart])
-    // useEffect(()=>{
-    //     if(cart.length){
-    //     }
-    // },[cart])
-    // console.log(totalItems)
     let dispatch = useDispatch()
     useEffect(()=>{
         if(cart.length<=0){
             dispatch(getItemsToCart())
         }
     },[])
+    // to remove item from cart
     const removeFromcart = (bookIndex) =>{
         dispatch(removeItemFromCart(bookIndex))
     }
+    // to decrement the quantity
     const decrementQuantity = ({cartItem,index}) => {
         let newCart = JSON.parse(JSON.stringify(cart))
         if(newCart[index].quantity === 1){
@@ -41,6 +39,7 @@ function Cart(){
             dispatch(updateItemQuantity(newCart[index]))
         }
     }
+    // to increment the quantity
     const incrementQuantity = (index)=>{
         let newCart = JSON.parse(JSON.stringify(cart))
         newCart[index].quantity++
@@ -51,29 +50,27 @@ function Cart(){
             {
                 cart.length>0?
                     <div className="row">
+                        {/* cart part */}
                         <div className="col-lg-8">
                             {
                                 cart.map((cartItem,index)=>{
                                     return(
                                         <div className="row ">
                                             <div className="col-6 col-sm-3 col-md-2">
-                                            {
-                                                cartItem.books.discount>0?
-                                                    <div style={{position:"relative"}}>
-                                                        <div className="text-white rounded-circle p-1" style={{position:"absolute",right:"0%",backgroundColor:"red",margin:"-5%"}}>{cartItem.books.discount}%</div>
-                                                            <img src={cartItem.books.bookImage} className="img-fluid rounded-start" alt="books" />
-                                                    </div>:
-                                                    <img src={cartItem.books.bookImage} className="img-fluid rounded-start" alt="books" />
-                                            }
-                                                {/* <img src={cartItem.books.bookImage} className="img-fluid rounded-start" alt="books" /> */}
+                                                {
+                                                    cartItem.books.discount>0?
+                                                        <div style={{position:"relative"}}>
+                                                            <div className="text-white rounded-circle p-1" style={{position:"absolute",right:"0%",backgroundColor:"red",margin:"-5%"}}>{cartItem.books.discount}%</div>
+                                                                <img src={cartItem.books.bookImage} className="img-fluid rounded-start" alt="books" />
+                                                        </div>:
+                                                        <img src={cartItem.books.bookImage} className="img-fluid rounded-start" alt="books" />
+                                                }
                                             </div>
                                             <div className="col-6 col-sm-3 col-md-3">
                                                 <h5 className="card-title" style={{fontSize:"100%"}}><strong>{cartItem.books.bookTitle}</strong></h5>
                                                 <p className="card-text" style={{fontSize:"80%",margin:"0px",padding:"0px"}}><strong>By: </strong>{cartItem.books.author}</p>
                                                 <p className="card-text" style={{fontSize:"80%",margin:"0px",padding:"0px"}}><strong>Publisher: </strong>{cartItem.books.publisher}</p>
                                                 <p className="card-text" style={{fontSize:"80%",margin:"0px",padding:"0px"}}><strong>Rating: </strong>{cartItem.books.rating}</p>
-                                                {/* <p className="card-text text-decoration-line-through" style={{fontSize:"80%",margin:"0px",padding:"0px"}}><strong>₹</strong>{cartItem.books.price}</p>
-                                                <p className="card-text text-success" style={{fontSize:"150%",margin:"0px",padding:"0px"}}><strong>₹</strong>{Math.round((cartItem.books.price)-((cartItem.books.price)*(cartItem.books.discount/100)))}</p> */}
                                                 {
                                                     cartItem.books.discount>0?
                                                     <>
@@ -100,7 +97,6 @@ function Cart(){
                                                 </div>
                                                 <div className="mt-2 mb-2" style={{fontSize:"80%",margin:"0px",padding:"0px"}}>
                                                     <button type="button" className="btn btn-danger" style={{fontSize:"90%"}} onClick={()=>removeFromcart({cartItem,index})}><strong>Delete</strong></button>
-                                                    {/* <button type="button" className="btn btn-secondary ms-2" style={{fontSize:"90%"}}><strong>Add to Wishlist</strong></button> */}
                                                 </div>
                                             </div>
                                             <hr />
@@ -109,6 +105,7 @@ function Cart(){
                                 })
                             }
                         </div>
+                        {/* summary part */}
                         <div className="col-lg-4 ">
                             <div className="mt-2 rounded p-2 bg-secondary bg-gradient">
                             <h5 className="text-center text-white"><strong>Cart Summary</strong></h5>
@@ -159,11 +156,7 @@ function Cart(){
                                     <div className="col-5">
                                         <strong>₹</strong>{Math.round(totalPrice-discountPrice)}
                                     </div>
-                                </div>
-                                
-                                {/* <h6 ><strong className="text-secondary">Total Price: </strong>{totalPrice}</h6>
-                                <h6 ><strong className="text-secondary">Discount Price: </strong>{discountPrice}</h6>
-                            <h6 ><strong className="text-secondary">Your Saving: </strong>{totalPrice-discountPrice}</h6> */}
+                                </div>                                
                             </div>
                             <button className="btn btn-secondary float-end mt-2 mb-2"><strong>Check Out</strong></button>
                         </div>

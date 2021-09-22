@@ -4,7 +4,6 @@ import { addRecentlyViewedBooks } from '../store/BooksSlice';
 import DescriptionPageRight from './DescriptionPageRight';
 import { addToCart } from '../store/CartSlice'
 import { addToWishList } from '../store/WishListSlice'
-import Quantity from '../cart/Quantity';
 import { useHistory } from 'react-router';
 import Loader from '../AdditionalComponents/Loader'
 const BookDetailsPage=({books})=>{
