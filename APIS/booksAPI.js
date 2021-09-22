@@ -13,13 +13,14 @@ booksApiObj.use((request,response,next)=>{
     booksCollection = request.app.get("booksCollection")
     next()
 })
-//get products
+
+//get books from db
 booksApiObj.get("/getbooks",async(request,response)=>{
     let books = await booksCollection.find().toArray()
     response.send({message:"books",payload:books})
 })
 
-// Add category
+// Add Books to db
 booksApiObj.post("/addToBook", checkToken,multer.single("bookImage"), expressAsyncHandler(async (request, response) => {
     const book = JSON.parse(request.body.books)
     //console.log("book",book)
@@ -32,7 +33,7 @@ booksApiObj.post("/addToBook", checkToken,multer.single("bookImage"), expressAsy
     })
 }))
 
-// Delete category
+// Delete Books from db
 booksApiObj.post("/deleteFromBook", checkToken, expressAsyncHandler(async (request, response) => {
     const book = request.body
     await booksCollection.deleteOne({ isbn: book.isbn })
@@ -42,7 +43,7 @@ booksApiObj.post("/deleteFromBook", checkToken, expressAsyncHandler(async (reque
     })
 }))
 
-// Update category
+// Update books in db
 booksApiObj.post("/updatetobook", checkToken,multer.single("bookImage"), expressAsyncHandler(async (request, response) => {
     const book = JSON.parse(request.body.books)
     //console.log("bookApi",book)
@@ -59,5 +60,6 @@ booksApiObj.post("/updatetobook", checkToken,multer.single("bookImage"), express
         book
     })
 }))
+
 //export module
 module.exports = booksApiObj

@@ -11,7 +11,8 @@ cartApiObj.use((request,response,next)=>{
     cartCollection = request.app.get("cartCollection")
     next()
 })
-// post cart data to db
+
+// add cart iteams and quantity to db
 cartApiObj.post("/addItemToCart",checkToken,expressAsyncHandler(async(request,response)=>{
     const { books,quantity } = request.body
     //console.log("books12323",books)
@@ -29,7 +30,8 @@ cartApiObj.post("/addItemToCart",checkToken,expressAsyncHandler(async(request,re
     }
     response.status(201).json({status: "success",message: "item added"})
 }))
-// get cart data from db
+
+// get cart items and quantity from db
 cartApiObj.get("/getCartItems", checkToken, expressAsyncHandler(async (request, response) => {
     const email = request.email
     //console.log("cart email",email)
@@ -37,7 +39,8 @@ cartApiObj.get("/getCartItems", checkToken, expressAsyncHandler(async (request, 
     response.status(200).json({status: "success",payload: cartItems?.cart,cartemail:cartItems.email})
     //console.log(cartItems.cart)
 }))
-// update cart 
+
+// update cart iteams and quantity in db
 cartApiObj.post("/updateCart", checkToken, expressAsyncHandler(async (request, response) => {
     const { books, quantity } = request.body
     const email = request.email
@@ -47,7 +50,8 @@ cartApiObj.post("/updateCart", checkToken, expressAsyncHandler(async (request, r
         message: "quantity updated"
     })
 }))
-//remove item from cart
+
+//remove cart items from db
 cartApiObj.post("/removeItemFromCart", checkToken, expressAsyncHandler(async (request, response) => {
     const { books } = request.body
     const email = request.email
@@ -57,7 +61,6 @@ cartApiObj.post("/removeItemFromCart", checkToken, expressAsyncHandler(async (re
         message: "item deleted"
     })
 }))
-
 
 //export module
 module.exports = cartApiObj

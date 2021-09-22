@@ -10,7 +10,8 @@ wishListApiObj.use((request,response,next)=>{
     wishListCollection = request.app.get("wishListCollection")
     next()
 })
-// adding to wishlist
+
+// adding to wishlist db
 wishListApiObj.post("/addItemToWishList",checkToken,expressAsyncHandler(async(request,response)=>{
     const { books } = request.body
     //console.log("books12323",books)
@@ -18,7 +19,8 @@ wishListApiObj.post("/addItemToWishList",checkToken,expressAsyncHandler(async(re
     await wishListCollection.updateOne({ email },{$addToSet:{wishList:books}},{upsert:true})
     response.status(201).json({status: "success",message: "item added"})
 }))
-// get from wishlist
+
+// get from wishlist db
 wishListApiObj.get("/getItemsfromWishList", checkToken, expressAsyncHandler(async (request, response) => {
     const email = request.email
     //console.log("wish list email:",email)
@@ -31,7 +33,8 @@ wishListApiObj.get("/getItemsfromWishList", checkToken, expressAsyncHandler(asyn
         wishlistEmail: wishListFromDB.email
     })
 }))
-//remove from wishlist
+
+//remove from wishlist db
 wishListApiObj.post("/removeItemFromWishList", checkToken, expressAsyncHandler(async (request, response) => {
     const { books } = request.body
     const email = request.email
@@ -42,4 +45,5 @@ wishListApiObj.post("/removeItemFromWishList", checkToken, expressAsyncHandler(a
     })
 }))
 
+//export module
 module.exports = wishListApiObj

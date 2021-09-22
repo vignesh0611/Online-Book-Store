@@ -5,19 +5,21 @@ const categoryApiObj = express.Router()
 const expressAsyncHandler=require("express-async-handler")
 const checkToken = require("./Middleware/TokenMiddleware")
 const objectID = require("mongodb").ObjectId
+
 categoryApiObj.use(express.json())
 let categoryCollection;
 categoryApiObj.use((request,response,next)=>{
     categoryCollection = request.app.get("categoryCollection")
     next()
 })
-//get products
+
+//get categories from db
 categoryApiObj.get("/getcategory",async(request,response)=>{
     let category = await categoryCollection.find().toArray()
     response.send({message:"category",payload:category})
 })
 
-// Add category
+// Add category to db
 categoryApiObj.post("/addToCategory", checkToken, expressAsyncHandler(async (request, response) => {
     const category = request.body
     await categoryCollection.insertOne(category)
@@ -27,7 +29,7 @@ categoryApiObj.post("/addToCategory", checkToken, expressAsyncHandler(async (req
     })
 }))
 
-// Delete category
+// Delete category from db
 categoryApiObj.post("/deletefromCategory", checkToken, expressAsyncHandler(async (request, response) => {
     const category = request.body
     await categoryCollection.deleteOne({ category: category.category })
@@ -37,7 +39,7 @@ categoryApiObj.post("/deletefromCategory", checkToken, expressAsyncHandler(async
     })
 }))
 
-// Update category
+// Update category in db
 categoryApiObj.post("/updatetoCategory", checkToken, expressAsyncHandler(async (request, response) => {
     const category = request.body
     await categoryCollection.updateOne({ _id: new objectID(category._id) }, { $set: { category: category.category } })

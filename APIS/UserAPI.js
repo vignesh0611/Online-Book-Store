@@ -10,9 +10,8 @@ const jwt =require("jsonwebtoken")
 const objectID = require("mongodb").ObjectId
 const { decrypt,encrypt } = require("../Helpers/Encrypt")
 const { sendMail } =require("../Helpers/email")
-// body parser middleware
+
 userApiObj.use(express.json())
-//get usercollection
 let usersCollection
 let cartCollection
 userApiObj.use((request,response,next)=>{
@@ -24,14 +23,12 @@ userApiObj.use((request,response,next)=>{
     next()
 })
 
-// user register
+// user register to db
 userApiObj.post("/register",expressAsyncHandler(async(request,response)=>{
     let newUser = request.body
-    //newUser = decrypt(newUser.user)
     //console.log("new user",newUser)
     // check for duplicate email
-    const user = await usersCollection.findOne({email:newUser.email})
-    
+    const user = await usersCollection.findOne({email:newUser.email}) 
     //if user existed, send res as user existed
     if(user){
         response.send({message:"user exist"})
@@ -51,7 +48,7 @@ userApiObj.post("/register",expressAsyncHandler(async(request,response)=>{
     }
 }))
 
-//user login
+//user login with userCredential
 userApiObj.post('/login',expressAsyncHandler(async(request,response)=>{
     // get credential
     let userCredentialObj = request.body
@@ -60,8 +57,6 @@ userApiObj.post('/login',expressAsyncHandler(async(request,response)=>{
     // find user by username
     let user = await usersCollection.findOne({email : userCredentialObj.email})
     // if user not exist
-
-    
     if(!user){
         response.send({message:"Invalid email"})
     }
@@ -90,10 +85,10 @@ userApiObj.post('/login',expressAsyncHandler(async(request,response)=>{
         }
     }
 }))
-    // Update User
+
+// Update User data to db
 userApiObj.put("/updateUserData", checkToken, multer.single("profilePicture"), expressAsyncHandler(async (request, response) => {
     let user = JSON.parse(request.body.user)
-    //user = decrypt(user.user)
     //console.log("user:",user)
     if (request.file) {
         user.profilePicture = request.file.path
@@ -164,4 +159,5 @@ userApiObj.put("/updaterole", checkToken, expressAsyncHandler(async (request, re
     })
 }))
 
+//export module
 module.exports = userApiObj
