@@ -1,6 +1,7 @@
 import { createAsyncThunk,createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// get from db
 export const getCategories = createAsyncThunk("getCategories",(async(_,thunkAPI)=>{
     const {data} = await axios.get("/category/getcategory")
     //console.log("data :",data)
@@ -12,6 +13,7 @@ export const getCategories = createAsyncThunk("getCategories",(async(_,thunkAPI)
     }
 }))
 
+//add to category
 export const addCategory = createAsyncThunk("addCategory", (async (category, thunkAPI) => {
     //console.log("addCategory",category)
     const token = localStorage.getItem("token")
@@ -27,6 +29,7 @@ export const addCategory = createAsyncThunk("addCategory", (async (category, thu
     }
 }))
 
+// delete from category db
 export const deleteCategory = createAsyncThunk("deleteCategory", (async ({ category, index }, thunkAPI) => {
     const token = localStorage.getItem("token")
     const { data } = await axios.post("/category/deletefromCategory", category, {
@@ -42,6 +45,7 @@ export const deleteCategory = createAsyncThunk("deleteCategory", (async ({ categ
     }
 }))
 
+// update to category db
 export const updateCategory = createAsyncThunk("updateCategory", (async ({ category, index }, thunkAPI) => {
     const token = localStorage.getItem("token")
     const { data } = await axios.post("/category/updatetoCategory", category, {

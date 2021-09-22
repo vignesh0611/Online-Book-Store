@@ -1,10 +1,10 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
 import axios from 'axios'
 import { decrypt } from "../AdditionalComponents/Encrypt"
+
+//user login slice
 export const userLogin = createAsyncThunk('loginUser',async (userCredentialObj,thunkAPI)=>{
-        // make post
         //console.log("useeCrediobj",userCredentialObj);
-        // type is user
         let data;
         let response=await axios.post('/user/login',{user:userCredentialObj})
         data=response.data
@@ -21,10 +21,9 @@ export const userLogin = createAsyncThunk('loginUser',async (userCredentialObj,t
             // it will provide data to rejected state
             return thunkAPI.rejectWithValue(data)
         }
-        // else if(data.message === "failed"){
-        //     return thunkAPI.rejectWithValue(data)
-        // }
 })
+
+//update user
 export const updateUserData = createAsyncThunk("updateUserData", async (formData, thunkAPI) => {
     //console.log("formData",formData)
     const token = localStorage.getItem("token")
@@ -57,7 +56,7 @@ export const usersfromDB = createAsyncThunk("usersfromDB", async (_, thunkAPI) =
     }
 })
  
-// update role
+// update user role
 export const updateRole = createAsyncThunk("updateRole", async ({ user, index }, thunkAPI) => {
     const token = localStorage.getItem("token")
     const { data } = await axios.put("/user/updaterole", user, {
@@ -73,6 +72,7 @@ export const updateRole = createAsyncThunk("updateRole", async ({ user, index },
     }
 })
 
+//initial state
 const initialStateOfUser = {
     userObj:{},
     isSuccess:false,
@@ -97,6 +97,7 @@ const userSlice = createSlice({
         }
     },
     extraReducers:{
+        //userlogin data
         [userLogin.fulfilled]: (state,action) => {
             state.userObj = action.payload
             state.isSuccess = true
@@ -112,6 +113,7 @@ const userSlice = createSlice({
             state.isLoading = false
             state.invalidLoginMessage = action.payload.message
         },
+        //user update
         [updateUserData.pending]: (state, action) => {
             state.isError = ""
             state.isLoading = true
@@ -138,7 +140,7 @@ const userSlice = createSlice({
             state.isLoading = false
             state.isError = action.payload.reason
         },
-        // Update role
+        // Update user role
         [updateRole.pending]: (state, action) => {
             state.isError = ""
             state.isLoading = true

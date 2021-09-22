@@ -1,5 +1,7 @@
 import { createAsyncThunk,createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+
+// add to wishlist db 
 export const addToWishList = createAsyncThunk("addToWishList",(async(books,thunkAPI)=>{
     //console.log("bookQty".bookQty)
     const token = localStorage.getItem("token")
@@ -16,6 +18,7 @@ export const addToWishList = createAsyncThunk("addToWishList",(async(books,thunk
     }
 }))
 
+// get items from wishlist 
 export const getItemsFromWishList = createAsyncThunk("getItemsFromWishList",(async(_,thunkAPI)=>{
     const token = localStorage.getItem("token")
     const {data} = await axios.get("/wishlist/getItemsfromWishList",{
@@ -31,6 +34,7 @@ export const getItemsFromWishList = createAsyncThunk("getItemsFromWishList",(asy
     }
 }))
 
+//remove items from wishlist
 export const removeItemFromwishlist = createAsyncThunk("removeWishlistItem", (async ({ books, index }, thunkAPI) => {
     const token = localStorage.getItem("token")
     const { data } = await axios.post("/wishlist/removeItemFromWishList", { books }, {
@@ -45,6 +49,7 @@ export const removeItemFromwishlist = createAsyncThunk("removeWishlistItem", (as
     }
 }))
 
+//initialize state
 const initialWishListState = {
     wishList: [],
     wishListEmail:"",
@@ -64,7 +69,7 @@ const wishListSlice = createSlice({
             state.wishListEmail = action.payload
         }
     },extraReducers: {
-        // post cart
+        // post to wishlist
         [addToWishList.pending]: state => {
             state.isWishListLoading = true
             state.wishListError = ""
@@ -79,6 +84,7 @@ const wishListSlice = createSlice({
             state.wishListError = action.payload.reason
             //console.log("wishlist add",action.payload)
         },
+        //get from wishlist
         [getItemsFromWishList.pending]: (state, action) => {
             state.isWishlistLoading = true
             state.wishlistError = ""
@@ -92,6 +98,7 @@ const wishListSlice = createSlice({
             state.isWishlistLoading = false
             state.wishlistError = action.payload.reason
         },
+        //remove from wishlist
         [removeItemFromwishlist.pending]: (state, action) => {
             state.isWishlistLoading = true
             state.wishlistError = ""

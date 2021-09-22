@@ -1,5 +1,6 @@
 import { createAsyncThunk,createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+
 // post cart items to db
 export const addToCart = createAsyncThunk("addToCart",(async(bookQty,thunkAPI)=>{
     const token = localStorage.getItem("token")
@@ -16,6 +17,7 @@ export const addToCart = createAsyncThunk("addToCart",(async(bookQty,thunkAPI)=>
         return thunkAPI.rejectWithValue(data)
     }
 }))
+
 // get cart items from db
 export const getItemsToCart = createAsyncThunk("getItemsToCart",(async(_,thunkAPI)=>{
     const token = localStorage.getItem("token")
@@ -31,6 +33,7 @@ export const getItemsToCart = createAsyncThunk("getItemsToCart",(async(_,thunkAP
         return thunkAPI.rejectWithValue(data)
     }
 }))
+
 //update quantity in cart
 export const updateItemQuantity = createAsyncThunk("updateItemQuantity", (async (bookQty, thunkAPI) => {
     const token = localStorage.getItem("token")
@@ -46,6 +49,7 @@ export const updateItemQuantity = createAsyncThunk("updateItemQuantity", (async 
         return thunkAPI.rejectWithValue(data)
     }
 }))
+
 // remove item from cart
 export const removeItemFromCart = createAsyncThunk("removeItemFromCart", (async (bookIndex, thunkAPI) => {
     const token = localStorage.getItem("token")

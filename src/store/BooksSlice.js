@@ -2,6 +2,7 @@
 import { createAsyncThunk,createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// get books from db
 export const getBooks = createAsyncThunk("getBooks",(async(_,thunkAPI)=>{
     const {data} = await axios.get("/books/getbooks")
     //console.log("data :",data)
@@ -13,6 +14,7 @@ export const getBooks = createAsyncThunk("getBooks",(async(_,thunkAPI)=>{
     }
 }))
 
+// add books to db
 export const addBook = createAsyncThunk("addBook", (async (books, thunkAPI) => {
     //console.log("book",books)
     const token = localStorage.getItem("token")
@@ -29,6 +31,7 @@ export const addBook = createAsyncThunk("addBook", (async (books, thunkAPI) => {
     }
 }))
 
+// delete books from db
 export const deleteBook = createAsyncThunk("deleteBook", (async ({ book, index }, thunkAPI) => {
     const token = localStorage.getItem("token")
     const { data } = await axios.post("/books/deleteFromBook", book, {
@@ -44,6 +47,7 @@ export const deleteBook = createAsyncThunk("deleteBook", (async ({ book, index }
     }
 }))
 
+// edit books in db
 export const updatebook = createAsyncThunk("updatebook", (async ({ formData, index }, thunkAPI) => {
     const token = localStorage.getItem("token")
     const { data } = await axios.post("/books/updatetobook", formData, {
@@ -77,7 +81,7 @@ const booksSlice = createSlice({
         }
     },
     extraReducers: {
-        // Get categories
+        // Get books
         [getBooks.pending]: state => {
             state.isBooksLoading = true
             state.booksError = ""
@@ -91,7 +95,7 @@ const booksSlice = createSlice({
             state.isBooksLoading = false
             state.booksError = action.payload.reason
         },
-         // Add category
+         // Add books
          [addBook.pending]: state => {
             state.isBooksLoading = true
             state.booksError = ""
@@ -104,7 +108,7 @@ const booksSlice = createSlice({
             state.isBooksLoading = false
             state.booksError = action.payload.reason
         },
-        // Delete category
+        // Delete books
         [deleteBook.pending]: state => {
             state.isBooksLoading = true
             state.booksError = ""
@@ -117,7 +121,7 @@ const booksSlice = createSlice({
             state.isBooksLoading = false
             state.booksError = action.payload.reason
         },
-        // Update category
+        // Update books
         [updatebook.pending]: state => {
             state.isBooksLoading = true
             state.booksError = ""
