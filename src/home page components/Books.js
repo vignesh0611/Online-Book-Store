@@ -10,12 +10,12 @@ function Books(){
             dispatch(getBooks())
         }
     },[])
-    const history=useHistory()  
-    const count=0;  
+    const history=useHistory()   
     return(
         <div className="mt-2">
             <div className="border-top" style={{fontSize:"120%"}}>Best Selling</div>
             <div className="row row-cols-2 row-cols-sm-4 row-cols-md-6 row-cols-lg-6" >
+                {/* to filter books based on best selling tag */}
                 {
                     books.filter(books=>books.tag === "Best selling").slice(0,6).map((pro,index)=>{
                         return(
@@ -55,6 +55,7 @@ function Books(){
                     </div>
                     <div className="border-top" style={{fontSize:"120%"}}>New Arrivals</div>
                     <div className="row row-cols-2 row-cols-sm-4 row-cols-md-6 row-cols-lg-6" >
+                    {/* to get books based on new arrival tag */}
                     {
                     books.filter(books=>books.tag === "New arrivals").slice(0,6).map((pro,index)=>{
                         return(
@@ -88,9 +89,7 @@ function Books(){
                             )
                         })
                     }
-                    {/* {count=count+1} */}
             </div>
-                {/* {console.log("count",count)} */}
         </div>
     )
 }

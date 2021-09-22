@@ -1,15 +1,13 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router'
 import Loader from '../AdditionalComponents/Loader'
 import { useSelector, } from 'react-redux'
-//import { addToCart } from '../store/CartSlice'
 const BookTile=({books})=>{
     let history=useHistory()
     let {isBooksLoading}=useSelector(state=>state.book)
-    //let dispatch = useDispatch()
     return(        
         <div>
+            {/* books display page */}
             <div onClick={()=>history.push({ pathname: `/book/${books._id}`})}>
                 <div className="row mb-2">
                     <div className="col-6 col-sm-3 col-md-2">
@@ -40,10 +38,6 @@ const BookTile=({books})=>{
                         <h6 style={{fontSize:"100%",margin:"0px",padding:"0px"}} className="text-success"><strong>Available</strong></h6>
                         <p style={{fontSize:"80%",margin:"0px",padding:"0px"}}>Ships within 2-4 Days</p>
                         <p style={{fontSize:"80%",margin:"0px",padding:"0px"}}>₹39 shipping in India per item and low cost Worldwide</p>
-                        {/* <div className="mt-2">
-                            <button type="button" className="btn btn-danger" style={{fontSize:"90%"}}><strong>Buy Now</strong></button>
-                            <button type="button" className="btn btn-secondary ms-2" style={{fontSize:"90%"}}><strong>Add to Wishlist</strong></button>
-                        </div> */}
                     </div>
                 </div>
             </div>

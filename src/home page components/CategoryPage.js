@@ -8,6 +8,7 @@ function Categorypage(){
     const {category} = useParams()
     const {books}=useSelector(state=>state.book)
     return(
+        // filter book based on category
         <div className="container-fluid">
             <div className="d-none d-lg-block">
                 <div className="row mt-2 ">

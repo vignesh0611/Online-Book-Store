@@ -11,9 +11,10 @@ function Category(){
     let {categories}=useSelector(state=>state.category)
     return(
         <div className="container-fluid">
+            {/* category side bar */}
             <h5>Select By Category</h5>
             {
-                categories.map((category,index)=>{
+                categories.map((category)=>{
                     return(
                         <div>
                             <NavLink className="categoryLink" to={`/${category.category}`}>{category.category} <br /></NavLink>

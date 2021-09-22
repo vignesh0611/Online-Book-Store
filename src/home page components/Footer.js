@@ -1,7 +1,7 @@
 import {FaFacebookSquare,FaTwitterSquare,FaLinkedin,FaPinterestSquare,FaYoutubeSquare,FaInstagramSquare} from 'react-icons/fa'
 function footer(){
     return(
-        // style={{backgroundColor:"#D0D3D4"}}
+        // footer display   style={{backgroundColor:"#D0D3D4"}}
         <div className="bg-secondary bg-gradient" >
             <div className="d-none d-md-block">
                 <div className="d-flex container-fluid justify-content-around mt-2 pt-2" >
