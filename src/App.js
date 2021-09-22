@@ -1,7 +1,6 @@
 //import logo from './logo.svg';
 //import './App.css';
-import {BrowserRouter,Switch,NavLink,Route,useHistory} from 'react-router-dom'
-import HomePage from './home page components/homepage'
+import {Switch,Route,useHistory} from 'react-router-dom'
 import HomeNavBar from './home page components/homeNavBar';
 import Categorypage from './home page components/CategoryPage';
 import DisplayPage from './home page components/displayPage'
