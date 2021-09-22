@@ -40,7 +40,8 @@ function AdminDashboard(){
         }
     },[userObj])
     return(
-        <div className="container">
+        // admin dashbord rout part
+        <div className="container-fluid">
             <div className="row">
                 <div className="col-md-2">
                     <AdminSideBar url={url}/>
