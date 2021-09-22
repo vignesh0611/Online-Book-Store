@@ -14,15 +14,11 @@ import Login from './Register/Login';
 import UserDashboardPage from './UserDashboard/UserDashboardPage';
 import AdminDashboard from './AdminDashboard/AdminDashboard';
 import Cart from './cart/Cart'
-import Profile from "./UserDashboard/Profile"
-import ProfileCart from "./UserDashboard/ProfileCart"
-import AdminProfile from './AdminDashboard/AdminProfile';
 import { getCategories } from "./store/CategorySlice"
 import { getItemsFromWishList } from "./store/WishListSlice"
 import { getItemsToCart } from "./store/CartSlice"
 import { getBooks } from "./store/BooksSlice"
 import { usersfromDB } from "./store/UserSlice"
-// import {  } from "./store/UserSlice"
 import Message from "./AdditionalComponents/message"
 import { useSelector } from "react-redux"
 import { useEffect } from "react"

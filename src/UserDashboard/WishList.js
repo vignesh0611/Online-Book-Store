@@ -69,24 +69,11 @@ function WishList(){
                                             </>:
                                                 <p className="card-text text-success" style={{fontSize:"150%",margin:"0px",padding:"0px"}}><strong>₹</strong>{books.price}</p>
                                         }
-                                        {/* <p className="card-text text-decoration-line-through" style={{fontSize:"80%",margin:"0px",padding:"0px"}}><strong>₹</strong>{books.price}</p>
-                                        <p className="card-text text-success" style={{fontSize:"150%",margin:"0px",padding:"0px"}}><strong>₹</strong>{Math.round((books.price)-((books.price)*(books.discount/100)))}</p> */}
                                     </div>
                                     <div className="col-12 col-sm-6 col-md-7">
                                         <h6 style={{fontSize:"100%",margin:"0px",padding:"0px"}} className="text-success"><strong>Available</strong></h6>
                                         <p style={{fontSize:"80%",margin:"0px",padding:"0px"}}>Ships within 2-4 Days</p>
                                         <p style={{fontSize:"80%",margin:"0px",padding:"0px"}}>₹39 shipping in India per item and low cost Worldwide</p>
-                                        {/* <p style={{fontSize:"80%",margin:"0px",padding:"0px"}}>
-                                            Cost of {cartItem.quantity} books <span className="card-text text-success"><strong>₹</strong>{cartItem.quantity*((cartItem.books.price)-((cartItem.books.price)*(cartItem.books.discount/100)))}</span>
-                                        </p> */}
-                                        {/* <div className = "d-flex mt-2" style={{fontSize:"80%",margin:"0px",padding:"0px"}}>
-                                            <div className="text-danger"><strong>Quantity:</strong></div>
-                                                <div className="input-group input-group-sm ms-2">
-                                                    <div className="input-group-text cursor-pointer" onClick={()=>decrementQuantity({cartItem,index})}>-</div>
-                                                    <input type="text" className="text-center" style={{width:"15%"}} placeholder="Quantity" value={quantity}/>
-                                                    <div className="input-group-text cursor-pointer" onClick={()=>incrementQuantity(index)}>+</div>
-                                                </div>
-                                        </div> */}
                                         <div className="mt-2" style={{fontSize:"80%",margin:"0px",padding:"0px"}}>
                                             <button type="button" className="btn btn-danger" style={{fontSize:"90%"}} onClick={()=>removeFromWishList({books,index})}><strong>Delete</strong></button>
                                             <button type="button" className="btn btn-secondary ms-2" style={{fontSize:"90%"}} onClick={()=>dispatch(addToCart({books,quantity})) && removeFromWishList({books,index})}><strong>Add to Cart</strong></button>
@@ -97,9 +84,6 @@ function WishList(){
                             )
                         })
                     }
-                </div>
-                <div className="col-2">
-                    
                 </div>
             </div>:
             <div>

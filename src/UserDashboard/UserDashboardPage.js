@@ -1,7 +1,6 @@
 import {useEffect,useState} from 'react'
 import { useDispatch,useSelector } from 'react-redux'
 import UserSideBar from "./UserSideBar"
-import ProfileCart from './ProfileCart'
 import Cart from "../cart/Cart"
 import Profile from "./Profile"
 import WishList from "./WishList"

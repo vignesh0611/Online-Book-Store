@@ -1,9 +1,5 @@
 import { NavLink } from "react-router-dom"
 import { useEffect, useState } from "react"
-
-import { Switch, useRouteMatch,Route } from "react-router"
-import ProfileCart from "./ProfileCart"
-import WishList from "./WishList"
 import { useSelector } from "react-redux"
 function UserSidBar({url}){
     let {userObj} = useSelector(state=>state.user)
@@ -24,18 +20,13 @@ function UserSidBar({url}){
             setTotalItems(0)
         }
     }, [cart]);
-    //let { url,path } = useRouteMatch()
     //console.log(wishList.length)
     return(
         <div>
+            {/* side bar */}
             <button className="btn"><NavLink className="categoryLink" to={`${url}/profile`}>Profile</NavLink></button><br />
             <button className="btn"><NavLink className="categoryLink" to={`${url}/profilecart`}>Cart (<span >{totalItems}</span>)</NavLink></button><br />
             <button className="btn"><NavLink className="categoryLink" to={`${url}/wishlist`}>Wishlist (<span>{wishListCount}</span>)</NavLink></button><br />
-            {/* <Switch>
-            <Route path={`${path}/profilecart`}>
-                    <ProfileCart/>
-                </Route>
-            </Switch> */}
         </div>
     )
 }

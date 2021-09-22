@@ -26,7 +26,6 @@ function Profile(){
             setValue("phno",userObj.phno)
         }
     })
-
     useEffect(()=>{
         if(userObj.email !== cartemail){
             dispatch(setEmail(userObj.email))
@@ -41,9 +40,7 @@ function Profile(){
         data._id = userObj._id
         data.cartemail = cartemail
         data = JSON.stringify(data)
-
         formData.append("user", data)
-
         dispatch(updateUserData(formData))
         //console.log("formData",formData)
     }
@@ -52,25 +49,26 @@ function Profile(){
     }
     return(
         <div>
-            {/* <div className="row">
-                <div className="col-md-2">
-                    <UserSideBar />
-                </div> */}
+            {/* user profile */}
                 <div>
                     <h4>Hello {userObj.name}</h4>
                     <h6 className="text-center">Edit Profile Here</h6>
                     <div className="text-center mt-4">
                             {
+                                // to display updated profile pic
                                 file
                                     ? <img src={URL.createObjectURL(file)} className="border border-dark rounded-circle" width="200px" alt="" />
+                                    // to display profile pic is already updated
                                     : userObj.profilePicture
                                         ?
                                         <img src={userObj.profilePicture} className="border border-dark rounded-circle" width="200px" alt="" />
+                                        // to display default pic if profile pic is not updated
                                         :
                                         <img src={DefaultImage} className="border border-dark rounded-circle" width="200px" alt="" />
                             }
                         </div>
                     <form className="mt-3 w-75 mx-auto" onSubmit={handleSubmit(updateData)}>
+                        {/* profile pic  */}
                         <div className="row justify-content-center">
                             <div className="text-center mb-3">
                                 <label htmlFor="profilePicture" id="profilePictureLabel" className="text-danger cursor-pointer fw-bold">Change Profile Picture</label>
@@ -78,33 +76,45 @@ function Profile(){
                                         type="file" className="d-none"
                                         accept="image/*" name="profilePicture"
                                         id="profilePicture" onChange={onFileSelect} />
-                                </div>
                             </div>
+                        </div>
+
+                        {/* name */}
                         <div className="form-floating mt-2">
                             <input type="text" className="form-control" id="floatingInput" placeholder="#" name="name"
                             {...register("name",{required:true})} />
                             <label for="floatingInput">Name</label>
                         </div>
+
+                        {/* email */}
                         <div className="form-floating mt-2">
                             <input type="text" className="form-control" id="floatingInput" placeholder="#" name="email"
                             {...register("email",{required:true})} />
                             <label for="floatingInput">E-mail</label>
                         </div>
+
+                        {/* dob */}
                         <div className="form-floating mt-2">
                             <input type="text" className="form-control" id="floatingInput" placeholder="#" value={userObj.dob}
                              />
                             <label for="floatingInput">DOB</label>
                         </div>
+
+                        {/* address */}
                         <div className="form-floating mt-2">
                             <input type="text" className="form-control" id="floatingInput" placeholder="#" name="address"
                             {...register("address",{required:true})} />
                             <label for="floatingInput">Address</label>
                         </div>
+
+                        {/* pincode */}
                         <div className="form-floating mt-2">
                             <input type="text" className="form-control" id="floatingInput" placeholder="#" name="pincode"
                             {...register("pincode",{required:true})} />
                             <label for="floatingInput">Pincode</label>
                         </div>
+
+                        {/* phno */}
                         <div className="form-floating mt-2">
                             <input type="text" className="form-control" id="floatingInput" placeholder="#" name="phno"
                             {...register("phno")} />
@@ -120,7 +130,6 @@ function Profile(){
                     </form>
                 </div>
             </div>
-        // </div>
     )
 }
 export default Profile
