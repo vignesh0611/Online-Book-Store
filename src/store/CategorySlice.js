@@ -49,6 +49,7 @@ export const updateCategory = createAsyncThunk("updateCategory", (async ({ categ
             Authorization: `Bearer ${token}`
         }
     })
+    console.log('category',data)
     if (data.status === "success") {
         return thunkAPI.fulfillWithValue({ category, index })
     } else {

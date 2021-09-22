@@ -13,13 +13,14 @@ function ViewCategories({ setShow, setUpdateIndex }){
     let {categories, isCategoryLoading}=useSelector(state=>state.category)
     return(
         <div>
+            {/* view category */}
             <table className="text-center table-bordered w-100">
                 <thead>
                     <tr>
                         <th>S.No</th>
                         <th>Category</th>
                         <th>Option</th>
-                {/* {console.log("category",categories)} */}
+                        {/* {console.log("category",categories)} */}
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +31,9 @@ function ViewCategories({ setShow, setUpdateIndex }){
                                     <td>{index+1}</td>
                                     <td>{category.category}</td>
                                     <td>
+                                        {/* edit btn */}
                                         <span className="text-warning cursor-pointer" onClick={() => { setShow(true); setUpdateIndex(index) }}><FaEdit/></span>
+                                        {/* delete btn */}
                                         <span className="ms-2 text-danger cursor-pointer" onClick={() => dispatch(deleteCategory({ category, index }))}><MdDelete/></span>
                                     </td>
                                 </tr>

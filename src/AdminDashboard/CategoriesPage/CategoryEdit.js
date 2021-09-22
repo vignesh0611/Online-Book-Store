@@ -5,6 +5,7 @@ import AddCategory from './AddCategory';
 
 const EditCategory = ({ show, setShow, updateIndex, setUpdateIndex }) => {
     return (
+        // category update modal
         <Modal
             show={show}
             onHide={() => setShow(false)}
