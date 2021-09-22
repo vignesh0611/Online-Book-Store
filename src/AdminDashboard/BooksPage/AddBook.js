@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
@@ -6,52 +6,42 @@ import { addBook, updatebook } from '../../store/BooksSlice';
 import DefaultImage from "../../images/bookImage.jpg"
 
 const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
-    const {books,isSuccess}=useSelector(state=>state.book)
+    const {books}=useSelector(state=>state.book)
     const { categories } = useSelector(state => state.category)
-    const [file,setFile] = useState(null)
     const dispatch = useDispatch()
-    //console.log("isSuccess",isSuccess)
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm({
         defaultValues: { ...books[updateIndex],bookImage:"" }
     })
     const watchBookImage = watch("bookImage",[])
     const formSubmit = book => {
         const formData = new FormData()
+        // to update book details
         if (updateIndex >= 0) {
+            // if book image is updated
             if (book.bookImage) {
                 formData.append("bookImage", book.bookImage[0], book.bookImage[0].name)
             }
+            // if book image was not updated 
             else{
                 book.bookImage = books[updateIndex].bookImage
             }
+            // update book details
             book = JSON.stringify(book)
             formData.append("books", book)
             dispatch(updatebook({ formData, index: updateIndex }))
             setUpdateIndex(-1)
             return setShow(false)
         }
+        // to add new book
         else{
-                formData.append("bookImage", book.bookImage[0], book.bookImage[0].name)
-            // book._id = userObj._id
-            // book.cartemail = cartemail
+            formData.append("bookImage", book.bookImage[0], book.bookImage[0].name)
             delete book.bookImage
             book = JSON.stringify(book)
-
             formData.append("books", book)
-
             dispatch(addBook(formData))
-            //console.log(formData)
-            //if (books.findIndex(book => book.bookTitle === book.bookTitle) < 0) {
-                // dispatch(addBook(book))
-            //}
         }
-        //setFile(null);
         reset()
     }
-    // const onFileSelect = (event) =>{
-    //     setFile(event.target.files[0])
-    // }
-
     return (
         <div className={updateIndex >= 0 ? "container-fluid " : "container-fluid mt-3"}> 
             {
@@ -60,58 +50,49 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
             }
             <form onSubmit={handleSubmit(formSubmit)}>
                 <div className="text-center">
-                    {/* {
-                        file? <img src={URL.createObjectURL(file)} className="border border-dark" width="200px" alt="" />
-                                        // : userObj.profilePicture
-                                        //     ?
-                                        //     <img src={userObj.profilePicture} className="border border-dark" width="200px" alt="" />
-                        :<img src={DefaultImage} className="border border-dark" width="200px" alt="" />
-                    } */}<div className="form-group mb-3 align-items-center">
-                            <label htmlFor="bookImage" className="cursor-pointer">
-                                {
-                                    watchBookImage.length !== 0 ?
-                                        <span className="ms-5 mb-3 card p-1">
-                                            <img src={URL.createObjectURL(watchBookImage[0])} width="100%" alt="" />
-                                        </span>: updateIndex >=0 ?
-                                                    <span className="ms-5 mb-3 card p-1">
-                                                        <img src={books[updateIndex].bookImage} width="100%" alt="" />
-                                                    </span>:
-                                                        <span className="ms-5 mb-3 p-1">
-                                                            <img src={DefaultImage} width="50%" className="border p-1" alt="" />
-                                                        </span>
-                                }
-
-                            </label><br />
-                            <label htmlFor="bookImage">
-                                <div className="text-danger fw-bold cursor-pointer ms-5">
-                                    Choose Book Image
-                                </div>
-                            </label>
+                    <div className="form-group mb-3 align-items-center">
+                        <label htmlFor="bookImage" className="cursor-pointer">
                             {
-                                updateIndex >=0?
-                                    <input
-                                    type="file" className="d-none" accept="image/*"
-                                    id="bookImage" placeholder="#" name="bookImage"
-                                    {...register("bookImage")} />:
-                                        <input
-                                            type="file" className="d-none" accept="image/*"
-                                            id="bookImage" placeholder="#" name="bookImage"
-                                            {...register("bookImage", { required: true })} />
+                                // if book image is updated. To show the updated image
+                                watchBookImage.length !== 0 ?
+                                <span className="ms-5 mb-3 card p-1">
+                                    <img src={URL.createObjectURL(watchBookImage[0])} width="100%" alt="" />
+                                </span>
+                                // if book has a image. To show the existing image
+                                : updateIndex >=0 ?
+                                <span className="ms-5 mb-3 card p-1">
+                                    <img src={books[updateIndex].bookImage} width="100%" alt="" />
+                                </span>
+                                // if book doesnot have a image, show default image
+                                :
+                                <span className="ms-5 mb-3 p-1">
+                                    <img src={DefaultImage} width="50%" className="border p-1" alt="" />
+                                </span>
                             }
-                        </div>
-                        {errors.bookImage?.type === "required" && <p className="text-danger mt-1">Book Image is required</p>}
-                </div>
-                {/* Book image
-                <div className="row justify-content-center">
-                    <div className="text-center mb-3">
-                        <label htmlFor="bookImage" id="bookImageLabel" className="text-danger cursor-pointer fw-bold">Add Book Image</label>
-                        {errors.bookImage?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Category is required</p>}
-                        
-                        <input type="file" className="d-none form-control"
-                            accept="image/*" name="bookImage"
-                            id="bookImage" onChange={onFileSelect} />
+                        </label><br />
+
+                        {/* choose book image */}
+                        <label htmlFor="bookImage">
+                            <div className="text-danger fw-bold cursor-pointer ms-5">
+                                Choose Book Image
+                            </div>
+                        </label>
+                        {
+                            updateIndex >=0?
+                            <input
+                                type="file" className="d-none" accept="image/*"
+                                id="bookImage" placeholder="#" name="bookImage"
+                                {...register("bookImage")} />
+                            :
+                            <input
+                                type="file" className="d-none" accept="image/*"
+                                id="bookImage" placeholder="#" name="bookImage"
+                                {...register("bookImage", { required: true })} />
+                        }
                     </div>
-                </div> */}
+                    {errors.bookImage?.type === "required" && <p className="text-danger mt-1">Book Image is required</p>}
+                </div>
+
                 {/* book Name */}
                 <div class="form-floating mb-3">
                     <input
@@ -121,6 +102,7 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.bookTitle?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Book Name is required</p>}
                     <label for="floatingInput">Book Name</label>
                 </div>
+
                 {/* Category */}
                 <div className="form-floating mb-3">
                     <select class="form-select" aria-label="Default select example" id="floatingInput" placeholder="#" name="category" {...register("category", { required: true })}>
@@ -136,6 +118,7 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.category?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Category is required</p>}
                     <label for="floatingInput">Category</label>
                 </div>
+
                 {/* Discount */}
                 <div class="form-floating mb-3">
                     <input
@@ -145,6 +128,7 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.discount?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Discount is required</p>}
                     <label for="floatingInput">Discount(Number only(eg:10))</label>
                 </div>
+
                 {/* Release Date */}
                 <div class="form-floating mb-3">
                     <input
@@ -154,6 +138,7 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.releaseDate?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Release Date is required</p>}
                     <label for="floatingInput">Release Date(eg:06 Nov 1998)</label>
                 </div>
+
                 {/* Height */}
                 <div class="form-floating mb-3">
                     <input
@@ -163,6 +148,7 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.height?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Height is required</p>}
                     <label for="floatingInput">Height in mm(eg:134)</label>
                 </div>
+
                 {/* Width */}
                 <div class="form-floating mb-3">
                     <input
@@ -172,6 +158,7 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.width?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Width is required</p>}
                     <label for="floatingInput">Width- in mm(eg:150)</label>
                 </div>
+
                 {/* Language */}
                 <div class="form-floating mb-3">
                     <input
@@ -181,6 +168,7 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.language?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Language is required</p>}
                     <label for="floatingInput">Language</label>
                 </div>
+
                 {/* Tag */}
                 <div className="form-floating mb-3">
                     <select class="form-select" aria-label="Default select example" id="floatingInput" placeholder="#" name="tag" {...register("tag", { required: true })}>
@@ -191,6 +179,7 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.category?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Tag is required</p>}
                     <label for="floatingInput">Tag</label>
                 </div>
+
                 {/* ISBN */}
                 <div class="form-floating mb-3">
                     <input
@@ -200,6 +189,7 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.isbn?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">ISBN is required</p>}
                     <label for="floatingInput">ISBN</label>
                 </div>
+
                 {/* Author */}
                 <div class="form-floating mb-3">
                     <input
@@ -209,6 +199,7 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.author?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Author is required</p>}
                     <label for="floatingInput">Author</label>
                 </div>
+
                 {/* Publisher */}
                 <div class="form-floating mb-3">
                     <input
@@ -218,6 +209,7 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.publisher?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Publisher is required</p>}
                     <label for="floatingInput">Publisher</label>
                 </div>
+
                 {/* Price */}
                 <div class="form-floating mb-3">
                     <input
@@ -227,6 +219,7 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.price?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Price is required</p>}
                     <label for="floatingInput">Price (eg: 250)</label>
                 </div>
+
                 {/* Rating */}
                 <div class="form-floating mb-3">
                     <input
@@ -236,6 +229,7 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.rating?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Rating is required</p>}
                     <label for="floatingInput">Rating(eg:4.7)</label>
                 </div>
+
                 {/* Description */}
                 <div class="form-floating mb-3">
                     <textarea
@@ -245,6 +239,7 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.description?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Description is required</p>}
                     <label for="floatingInput">Description</label>
                 </div>
+
                 {/* Weight */}
                 <div class="form-floating mb-3">
                     <input
@@ -254,6 +249,7 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.weight?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Weight is required</p>}
                     <label for="floatingInput">Weight in gr(eg:350)</label>
                 </div>
+
                 {/* Pages */}
                 <div class="form-floating mb-3">
                     <input
@@ -263,16 +259,16 @@ const AddBook = ({ updateIndex, setUpdateIndex, setShow }) => {
                     {errors.pages?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Pages is required</p>}
                     <label for="floatingInput">Pages(eg:300)</label>
                 </div>
-
+                {/* to display add btn in add book module and edit btn in edit book module */}
                 <div className="text-center mt-4 mb-5">
                     {
-                        !updateIndex
-                            ?
+                        !updateIndex?
                             <>
                                 <button className="btn btn-danger mt-3" type="submit">Add</button>
                                 <button className="btn btn-secondary mt-3 ms-4" type="reset" onClick={() => reset()}>Reset</button>
                             </>
                             :
+                            // btn to be displayed in modal
                             <button className="btn btn-danger mt-3" type="submit">Update</button>
                     }
                 </div>

@@ -4,6 +4,7 @@ import AddBook from './AddBook';
 
 function EditBook({ show, setShow, updateIndex, setUpdateIndex }){
     return(
+        // to display modal
         <Modal
             show={show}
             onHide={() => setShow(false)}
