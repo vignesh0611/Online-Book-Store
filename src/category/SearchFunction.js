@@ -39,6 +39,7 @@ const SearchPage = () => {
                     <div className="col-9">
                         <div className="border-start mt-2 mb-2 ps-2">
                             <h3 className="mt-2">Search Results for "{query}"</h3>
+                            {/* to display no of books found */}
                             <div className="mt-2 mb-2">{filteredBooks.length} books found</div>
                             {
                                 filteredBooks.map(books => (
