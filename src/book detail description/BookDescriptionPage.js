@@ -5,7 +5,8 @@ function BookDetailsDescriptionPage(){
     const {bookId} = useParams();
     const {books}=useSelector(state=>state.book)
     return(
-        <div className="container">
+        <div className="container-fluid">
+            {/* to get book by filtering using Id */}
             {
                 books.filter(books=>books._id === bookId).map(books =>(<BookDetailsPage books={books}/>))
             }

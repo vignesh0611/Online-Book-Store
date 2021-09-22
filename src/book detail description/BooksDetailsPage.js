@@ -14,6 +14,7 @@ const BookDetailsPage=({books})=>{
     const dispatch = useDispatch()
     const [quantity,setQuantity] = useState(1);
     const history = useHistory()
+    // to store recently viewed book in store
     useEffect(()=>{
         if(recentlyViewed.indexOf(books) === -1){
             dispatch(addRecentlyViewedBooks(books))
@@ -21,6 +22,7 @@ const BookDetailsPage=({books})=>{
     },[books])
     return(          
         <div className="row mt-4">
+            {/* book display in description page */}
             <div className="col-lg-10 col-md-9 col-sm-12">
                 <div className="row mb-2">
                     <div className="col-6 col-sm-4 col-md-3">
@@ -140,11 +142,8 @@ const BookDetailsPage=({books})=>{
             <div className="col-lg-2 col-md-3 border-start d-none d-md-block">
                 <DescriptionPageRight recentlyViewed={recentlyViewed}/>
             </div>
-            {/* {
-                books && <Loader message="Loading Books..."/>
-            } */}
         </div>
-        );    
+    );    
 }    
 export default BookDetailsPage
 

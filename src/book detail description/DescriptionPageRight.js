@@ -7,6 +7,7 @@ function DescriptionPageRight({recentlyViewed}){
     const { bookId } = useParams()
     const [similarBooks, setSimilarBooks] = useState([]);
     const { books } = useSelector(state => state.book)
+    // to fin similar book in filtering method
     useEffect(() => {
         const currentBook = books.find(books => books._id === bookId)
         setSimilarBooks(books.filter(books => (
@@ -16,6 +17,7 @@ function DescriptionPageRight({recentlyViewed}){
     }, [bookId]);
     return(
         <div>
+            {/* to get similar books */}
             <div className="border-bottom">
                 <DescriptionPageRight1 title="Similar Books" books={similarBooks} />
             </div>
