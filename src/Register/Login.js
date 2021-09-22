@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react"
 import {useForm} from "react-hook-form"
-import {CgLogIn} from 'react-icons/cg'
 import {useSelector,useDispatch} from 'react-redux'
 import { useHistory } from "react-router-dom"
 import {userLogin} from '../store/userSlice'
 import { encrypt } from '../AdditionalComponents/Encrypt'
-// import {BiHomeAlt} from 'react-icons/bi'
 function Login (){
         let {register,handleSubmit, formState: { errors } } = useForm()
-        let {userObj,isSuccess,isLoading,isError,invalidLoginMessage}=useSelector(state=>state.user)
+        let {userObj,isSuccess,invalidLoginMessage}=useSelector(state=>state.user)
        // console.log("user:",userObj)
         let dispatch =useDispatch()
         let history = useHistory()
@@ -24,10 +22,8 @@ function Login (){
             //console.log("userafter",userObj);
             dispatch(userLogin(userObj))
         }
+        // to check user auth or not and checking the role
         useEffect(()=>{
-            // if(userObj.status === "blocked"){
-            //     setLoginStatus("*Your account has been blocked. Contact admin to continue shopping")
-            // }
             if (isSuccess && userObj.role === "user" ){
                 history.push(`/`)
             }
@@ -60,10 +56,6 @@ function Login (){
                     <label for="password">Password</label>
                 </div>
                 {errors.password?.type==='required' && <p className="alert alert-danger">password is required</p>}
-                <p className="text-danger">{loginState}</p>
-                {/* <div className="col-6 float-end">
-                    <button className="btn btn-success">Login</button>
-                </div> */}
                 <div className="text-center mb-3">
                     <button className="btn btn-success" type="submit">Login</button>
                     <div className="text-danger" style={{cursor:"pointer"}} onClick={(()=>history.push("/signup"))}>New User? Signup</div>

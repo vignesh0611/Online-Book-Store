@@ -7,6 +7,7 @@ function Register(){
     let [userRegisterStatus,setUserRegisterStatus] = useState("")
     let [passwordMatch,setPasseordMatch] = useState("")
     let history = useHistory()
+    // to register user on form submit
     const onRegisterFormSubmit = async(userObj) => {
         //console.log(userObj)
         userObj.role = "user"
@@ -31,8 +32,8 @@ function Register(){
         <div className="container-fluid">
             <div className="row mt-5 mb-5">
                 <h1 className="text-center">REGISTER HERE</h1>
-                {/* name */}
                 <form className="col-11 col-sm-8 col-md-6 mx-auto shadow pt-3" onSubmit={handleSubmit(onRegisterFormSubmit)}>
+                    {/* name */}
                     <div className="form-floating mb-3">
                         <input type="text" 
                             className="form-control" 
@@ -42,6 +43,7 @@ function Register(){
                         <label for="name">Name</label>
                     </div>
                     {errors.name?.type==='required' && <p className="alert alert-danger">Name is required</p>}
+                    
                     {/* email */}
                     <div class="form-floating mb-3">
                         <input type="email" 
@@ -76,6 +78,7 @@ function Register(){
                     </div>
                     {errors.confirmpassword?.type==='required' && <p className="alert alert-danger">password is required</p>}
                     <p className="text-danger">{passwordMatch}</p>
+                    
                     {/* dob */}
                     <div class="form-floating mb-3">
                         <input type="date" 
