@@ -1,0 +1,230 @@
+
+    {
+        "bookTitle": "ReactJS by Example- Building Modern Web Applications with React",
+        "author": "Vipul Amler and Prathmesh Sonpatki",
+        "publisher": "Packt Publishing",
+        "price": 3324,
+        "rating": 4.5,
+        "releaseDate": "18 Apr 2016",
+        "description": "A book about React JS",
+        "bookImage": "https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/644/9781785289644.jpg",
+        "category": "ReactJS",
+        "isbn": 9781785289644
+    }
+    {
+        "bookTitle": "Node.js Web Development - First Edition",
+        "author": "David Herron",
+        "publisher": "Packt Publishing",
+        "price": 3883,
+        "rating": 4.5,
+        "releaseDate": "30 May 2018",
+        "description": "A book about Node.js",
+        "bookImage": "https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/859/9781788626859.jpg",
+        "category": "Node JS",
+        "isbn": 938178521231
+    }
+    {
+        "bookTitle": "Node.js Web Development - Second Edition",
+        "author": "David Herron",
+        "publisher": "Packt Publishing",
+        "price": 3626,
+        "rating": 4.6,
+        "releaseDate": "29 Jun 2016",
+        "description": "Node.js is a server-side JavaScript platform using an event driven, non-blocking I/O model allowing users to build fast and scalable data-intensive applications running in real time",
+        "bookImage": "https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/503/9781785881503.jpg",
+        "category": "Node JS",
+        "isbn": 928118589233
+    }
+    {
+        "bookTitle": "Node.js Web Development - Third Edition",
+        "author": "David Herron",
+        "publisher": "Packt Publishing",
+        "price": 3903,
+        "rating": 4.7,
+        "releaseDate": "31 Jul 2020",
+        "description": "Node.js is the leading choice of server-side web development platform, enabling developers to use the same tools and paradigms for both server-side and client-side software",
+        "bookImage": "https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/572/9781838987572.jpg",
+        "category": "Node JS",
+        "isbn": 998878528219
+    }
+    {
+        "bookTitle": "JavaScript for Modern Web Development",
+        "author": "Alok Ranjan",
+        "publisher": "BPB Publications",
+        "price": 2557,
+        "rating": 4.6,
+        "releaseDate": "21 June 2020",
+        "description": "This book will take you on a complete journey of learning web development, starting right with the basics.",
+        "bookImage": "https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/721/9789389328721.jpg",
+        "category": "Modern Javascript",
+        "isbn": 911273581211
+    }
+    {
+        "bookTitle": "Modern JavaScript Web Development Cookbook",
+        "author": "Federico Kereki",
+        "publisher": "Packt Publishing",
+        "price": 4583,
+        "rating": 4.7,
+        "releaseDate": "22 Dec 2018",
+        "description": "A book about Modern JavaScript Web Development Cookbook",
+        "bookImage": "https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/749/9781788992749.jpg",
+        "category": "Modern Javascript",
+        "isbn": 918078501239
+    }
+    {
+        "bookTitle": "Modern JavaScript Applications",
+        "author": "Narayan Prusty",
+        "publisher": "Packt Publishing",
+        "price": 4050,
+        "rating": 4.7,
+        "releaseDate": "21 Feb 2017",
+        "description": "A book about Modern JavaScript Applications",
+        "bookImage": "https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/442/9781785881442.jpg",
+        "category": "Modern Javascript",
+        "isbn": 928378021738
+    }
+    {
+        "bookTitle": "Responsive Web Design with HTML5 and CSS: Develop future-proof responsive websites using the latest HTML5 and CSS techniques, 3rd Edition Kindle Edition",
+        "author": "Vipul Amler and Prathmesh Sonpatki",
+        "publisher": "Ben Frain",
+        "price": 3424,
+        "rating": 4.1,
+        "releaseDate": "14 Apr 2016",
+        "description": "Harness the latest capabilities of HTML5 and CSS to create a single UI that works flawlessly on mobile phones, tablets, and desktops — plus everything in-between",
+        "bookImage": "https://m.media-amazon.com/images/I/51HltaSN6KL.jpg",
+        "category": "HTML,CSS,RWD",
+        "isbn": 8181785289644
+    }
+    {
+        "bookTitle": "Learning Responsive Web Design: A Beginner's Guide",
+        "author": " Jennifer Kyrnin",
+        "publisher": " Laura Lemay ",
+        "price": 1024,
+        "rating": 4.5,
+        "releaseDate": "14 jan 2015",
+        "description": "HTML5 Black Book is the one-time reference book, written from the Web professional’s point of view, containing hundreds of examples and covering nearly every aspect of HTML5. It will help you to master various Web technologies, other than HTML5, including CSS3, ",
+        "bookImage": "https://images-na.ssl-images-amazon.com/images/I/51s033oDldL._SX331_BO1,204,203,200_.jpg",
+        "category": "HTML,CSS,RWD",
+        "isbn": 6181785289625
+    }
+    {
+        "bookTitle": "Responsive web design with html5 and css ",
+        "author": " Minnick",
+        "publisher": " luthra ",
+        "price": 5000,
+        "rating": 4.8,
+        "releaseDate": "20 nov 2017",
+        "description": "Written by a Web development expert, the fifth edition of this trusted resource has been thoroughly revised and reorganized to address HTML5, the revolutionary new Web standard.",
+        "bookImage": "https://images-na.ssl-images-amazon.com/images/I/51s033oDldL._SX331_BO1,204,203,200_.jpg",
+        "category": "HTML,CSS,RWD",
+        "isbn": 7168785289625
+    }
+    {
+        "bookTitle": "MongoDB in Action, 2ed: Covers MongoDB Version 3.0 (MANNING)",
+        "author": " Kyle Banker, Peter Bakkum",
+        "publisher": " sargun ",
+        "price": 3000,
+        "rating": 4.9,
+        "releaseDate": "22 nov 2019",
+        "description": "MongoDB in Action, Second Edition is a completely revised and updated version. It introduces MongoDB 3.0 and the document-oriented database model. This perfectly paced book gives you both the big picture you’ll need as a developer and enough low-level detail to satisfy system engineers",
+        "bookImage": "https://m.media-amazon.com/images/I/51Si112ZAiL._AC_UY218_.jpg",
+        "category": "MONGODB",
+        "isbn": 5678904329625
+    }
+    {
+        "bookTitle": "MongoDB Complete Guide: Develop Strong Understanding of Administering MongoDB, CRUD Operations, MongoDB Commands",
+        "author": " Manu Sharma ",
+        "publisher": " abrar ",
+        "price": 2000,
+        "rating": 4.4,
+        "releaseDate": "25 oct 2018",
+        "description": "MongoDB in Action, Second Edition is a completely revised and updated version. It introduces MongoDB 3.0 and the document-oriented database model. This perfectly paced book gives you both the big picture you’ll need as a developer and enough low-level detail to satisfy system engineers",
+        "bookImage": "https://m.media-amazon.com/images/I/51HVkpvByZS._AC_UY218_.jpg",
+        "category": "MONGODB",
+        "isbn": 4328904329625
+    }
+    {
+        "bookTitle": "MongoDB Simply In Depth Kindle Edition",
+        "author": " Sultan Ahmad ",
+        "publisher": "Ajit Singh ",
+        "price": 6000,
+        "rating": 3.8,
+        "releaseDate": "26 sept 2020",
+        "description": "MongoDB in Action, Second Edition is a completely revised and updated version. It introduces MongoDB 3.0 and the document-oriented database model. This perfectly paced book gives you both the big picture you’ll need as a developer and enough low-level detail to satisfy system engineers",
+        "bookImage": "https://m.media-amazon.com/images/I/512IbjMNpyL._SY346_.jpg",
+        "category": "MONGODB",
+        "isbn": 2345289043296
+    }
+    {
+        "bookTitle": "The Full Stack Developer",
+        "author": "Chris Northwood",
+        "publisher": "Apress",
+        "price": 2067,
+        "rating": 5,
+        "releaseDate": "20 Nov 2018",
+        "description": "Understand the technical foundations, as well as the non-programming skills needed to be a successful full stack web developer.",
+        "bookImage": "https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/516/9781484241516.jpg",
+        "category": "Full Stack Developer",
+        "isbn": 9781484241516
+    }
+    {
+        "bookTitle": "Cracking the Full Stack Developer Interview",
+        "author": "Hirako San",
+        "publisher": "Independently Published",
+        "price": 1456,
+        "rating": 4.3,
+        "releaseDate": "18 Dec 2019",
+        "description": "Cracking the Full Stack Developer Interview is the result of intensive curation of commonly asked interview questions, teaching you everything you need to know to land the best software developer jobs.",
+        "bookImage": "https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/913/9781791920913.jpg",
+        "category": "Full Stack Developer",
+        "isbn": 9781791920913
+    }
+    {
+        "bookTitle": "Become Super Full Stack Developer",
+        "author": "Justin Yang",
+        "publisher": "Independently Published",
+        "price": 1426,
+        "rating": 4.7,
+        "releaseDate": "22 May 2020",
+        "description": "Traditional full stack developer works on Front End Technology, Back End Development Languages, Database, API, and version Controlling Systems.",
+        "bookImage": "https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/524/9798647942524.jpg",
+        "category": "Full Stack Developer",
+        "isbn": 8647942523
+    }
+    {
+        "bookTitle": "React.js Essentials",
+        "author": "Artemij Fedosejev",
+        "publisher": "Packt Publishing",
+        "price": 1923,
+        "rating": 4.5,
+        "releaseDate": "31 Aug 2015",
+        "description": "Building web applications with maintainable and performant user interfaces is a challenge that many have faced for more than a decade, but no one has risen to this challenge quite like React.js.",
+        "bookImage": "https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/620/9781783551620.jpg",
+        "category": "ReactJS",
+        "isbn": 9781783551620
+    }
+    {
+        "bookTitle": "React js",
+        "author": "Emma William",
+        "publisher": "Amazon Digital Services LLC - KDP Print US",
+        "price": 1056,
+        "rating": 4.9,
+        "releaseDate": "15 Oct 2020",
+        "description": "In this book, we take you on a fun, hands-on and pragmatic journey to master React from a web development point of view.",
+        "bookImage": "https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/686/9798698196686.jpg",
+        "category": "ReactJS",
+        "isbn": 9798698196686
+    }
+    {
+        "bookTitle": "React js",
+        "author": "Susan Fitzgerald",
+        "publisher": "Independently Published",
+        "price": 971,
+        "rating": 4.2,
+        "releaseDate": "13 Jul 2020",
+        "description": "React jsFacebook's React has changed the way we think about web applications and user interface development.",
+        "bookImage": "https://d2g9wbak88g7ch.cloudfront.net/productimages/images200/286/9798665987286.jpg",
+        "category": "ReactJS",
+        "isbn": 9798665987286
+    }
+
