@@ -70,7 +70,7 @@ const BookDetailsPage=({books})=>{
                 <div>
                     {/* pre to leave space before para start */}
                     <h5>Description</h5>
-                    <p>{books.description}</p>
+                    <p style={{textIndent:"40px"}}>{books.description}</p>
                     <div className="row container-fluid mb-2">
                         <div className="col-md-6">
                             <div className="border-end d-none d-md-block">

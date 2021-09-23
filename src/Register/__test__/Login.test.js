@@ -23,3 +23,21 @@ it("should check input field is working properly", () => {
     // The change should be reflected in the input field
     expect(usernameInput.value).toBe("testuser")
 })
+
+it("should check proper error message is displayed when fields are empty", async () => {
+    // Rendering login component
+    render(
+        <TestComponent>
+            <Login />
+        </TestComponent>
+    )
+    // Finding and clicking on login button
+    const loginButton = screen.getByRole("button", { name: /login/i })
+    fireEvent.click(loginButton)
+    // Finding alert msg with required text
+    const reqAlert = await screen.findAllByText(/required/i)
+    // Two alert messages must be there for username and password
+    expect(reqAlert.length).toBe(2)
+})
+
+

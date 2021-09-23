@@ -73,7 +73,7 @@ export const updateRole = createAsyncThunk("updateRole", async ({ user, index },
 })
 
 //initial state
-const initialStateOfUser = {
+export const initialStateOfUser = {
     userObj:{},
     isSuccess:false,
     isLoading:false,

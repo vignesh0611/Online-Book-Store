@@ -45,17 +45,17 @@ function Login (){
                         {...register("email",{required:true})}/>
                     <label for="email">E-mail</label>
                 </div>
-                {errors.email?.type==='required' && <p className="alert alert-danger">Name is required</p>}
+                {errors.email?.type==='required' && <p className="alert alert-danger">E-mail is required</p>}
                 {/* password */}
                 <div class="form-floating mb-3">
                     <input type="password" 
                         className="form-control" 
-                        id="floatingpassword" 
+                        id="password" 
                         placeholder="****" 
                         {...register("password",{required:true})}/>
                     <label for="password">Password</label>
                 </div>
-                {errors.password?.type==='required' && <p className="alert alert-danger">password is required</p>}
+                {errors.password?.type==='required' && <p className="alert alert-danger">Password is required</p>}
                 <div className="text-center mb-3">
                     <button className="btn btn-success" type="submit">Login</button>
                     <div className="text-danger" style={{cursor:"pointer"}} onClick={(()=>history.push("/signup"))}>New User? Signup</div>

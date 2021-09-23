@@ -53,6 +53,7 @@ userApiObj.post('/login',expressAsyncHandler(async(request,response)=>{
     // get credential
     let userCredentialObj = request.body
     userCredentialObj = decrypt(userCredentialObj.user)
+    // console.log("credential",userCredentialObj);
     //console.log("usercerdentialdecrypt",userCredentialObj)
     // find user by username
     let user = await usersCollection.findOne({email : userCredentialObj.email})
@@ -81,6 +82,7 @@ userApiObj.post('/login',expressAsyncHandler(async(request,response)=>{
                 user = encrypt(user)
                 // Send token in response
                 response.send({message:"Success",token:signedToken,user:user})
+
             }
         }
     }

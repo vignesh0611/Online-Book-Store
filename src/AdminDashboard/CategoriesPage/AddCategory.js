@@ -27,9 +27,9 @@ const AddCategory = ({ updateIndex, setUpdateIndex, setShow }) => {
         <div>
             <form className={updateIndex >= 0 ? "mt-4 w-100" : "w-75 mt-4"} onSubmit={handleSubmit(formSubmit)}>
                 {/* Category Name */}
-                <div class="form-floating mb-3">
+                <div className="form-floating mb-3">
                     <input
-                        type="text" class="form-control"
+                        type="text" className="form-control"
                         id="floatingInput" placeholder="#" name="category"
                         {...register("category", { required: true })} />
                     {errors.category?.type === "required" && <p className="alert alert-danger w-50 text-center mx-auto py-2 mt-2">Category Name is required</p>}
