@@ -47,16 +47,17 @@ function ContactUs(){
                 <p >Copyright 2021. MyBookShelf.com. All Rights Reserved </p>
                 <p > Privacy PolicyTerms & conditions</p>
             </div>
+            <hr />
             <div className="mt-2">
                 <h5 className="text-center">Your Query</h5>
                 <form className="mx-auto shadow" onSubmit={handleSubmit(formSubmit)}>
                     <div class="form-floating">
-                        <textarea class="form-control h-100" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <textarea class="form-control" style={{height:"200px"}} placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                         <label for="floatingTextarea">Query</label>
                     </div>
                     <>
-                        <Button className="float-end mt-2 mb-2" variant="danger" type="submit" onClick={handleShow}>
-                            CheckOut
+                        <Button className="float-end mt-2 mb-2" variant="secondary" type="submit" onClick={handleShow}>
+                            Submit
                         </Button>
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>

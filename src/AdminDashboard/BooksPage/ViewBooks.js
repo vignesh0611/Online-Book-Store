@@ -55,7 +55,7 @@ function ViewBooks({ setShow, setUpdateIndex }){
                                         <td>{book.pages}</td>
                                         <td>
                                             {/* edit btn */}
-                                            <span className="ms-2 text-warning cursor-pointer" onClick={() => { setShow(true); setUpdateIndex(index) }}><FaEdit/></span>
+                                            <span className="ms-2 text-secondary cursor-pointer" onClick={() => { setShow(true); setUpdateIndex(index) }}><FaEdit/></span>
                                             {/* delete btn */}
                                             <span className="ms-2 text-danger cursor-pointer" onClick={() => dispatch(deleteBook({ book, index }))}><MdDelete/></span>
                                         </td>

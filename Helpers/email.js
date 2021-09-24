@@ -11,7 +11,7 @@ exports.transport = nodemailer.createTransport({
 
 exports.sendMail = (user, subject, text)=>{
     this.transport.sendMail({
-        from: "mybookshelfceo@gmail.com",
+        from: process.env.EMAIL_ID,
         to: user.email,
         subject,
         text

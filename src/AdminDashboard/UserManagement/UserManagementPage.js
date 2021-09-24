@@ -54,7 +54,7 @@ function UserManagement(){
                                             <td>{user.status}</td>
                                             <td className="text-center">
                                                 <span className="text-danger fw-bold cursor-pointer" onClick={() => toggleStatus({ user, index })}>{user.status === "active" ? "Block" : "Unblock"}</span>
-                                                <span className="ms-3 text-danger fw-bold cursor-pointer" onClick={() => toggleRole({ user, index })}>{user.role === "user" ? "Make_Admin" : "Make_User"}</span>
+                                                <span className="ms-3 text-secondary fw-bold cursor-pointer" onClick={() => toggleRole({ user, index })}>{user.role === "user" ? "Make_Admin" : "Make_User"}</span>
                                             </td>
                                         </tr>
                                      )}

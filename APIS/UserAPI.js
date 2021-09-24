@@ -78,7 +78,7 @@ userApiObj.post('/login',expressAsyncHandler(async(request,response)=>{
             else{
                 await usersCollection.updateOne({email: userCredentialObj.email},{$set: {lastLogin: new Date().toLocaleString()}},{upsert:true})
                 // create and send token
-                let signedToken = await jwt.sign({email:user.email},process.env.SECRET,{expiresIn:1000})
+                let signedToken = await jwt.sign({email:user.email},process.env.SECRET,{expiresIn:10000})
                 user = encrypt(user)
                 // Send token in response
                 response.send({message:"Success",token:signedToken,user:user})

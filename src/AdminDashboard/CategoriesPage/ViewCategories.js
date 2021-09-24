@@ -32,7 +32,7 @@ function ViewCategories({ setShow, setUpdateIndex }){
                                     <td>{category.category}</td>
                                     <td>
                                         {/* edit btn */}
-                                        <span className="text-warning cursor-pointer" onClick={() => { setShow(true); setUpdateIndex(index) }}><FaEdit/></span>
+                                        <span className="text-secondary cursor-pointer" onClick={() => { setShow(true); setUpdateIndex(index) }}><FaEdit/></span>
                                         {/* delete btn */}
                                         <span className="ms-2 text-danger cursor-pointer" onClick={() => dispatch(deleteCategory({ category, index }))}><MdDelete/></span>
                                     </td>
